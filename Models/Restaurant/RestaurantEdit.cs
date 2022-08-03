@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace RestaurantRaterMVC.Models.Restaurant
 {
-    public class RestaurantDetail
+    public class RestaurantEdit
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Name { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Location { get; set; }
-        [Display(Name = "Average Score")]
-        public double Score { get; set; }
-        public double AverageFoodScore { get; set; }
-        public double AverageCleanlinessScore {get; set; }
-        public double AverageAtmosphereScore {get; set; }
     }
 }

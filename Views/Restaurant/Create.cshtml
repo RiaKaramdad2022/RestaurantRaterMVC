@@ -5,32 +5,34 @@
 }
 <h1>Create A Restaurant</h1>
 <hr />
+<div class="row">
+    <div class="col-md-4"> 
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<span asp-validation-for="Name" class="text-danger"></span>
-<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<span asp-validation-for="Location" class="text-danger"></span>
-<form asp-action="Create">
+    <form asp-action="Create">
         <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" />
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Location" class="control-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
     </div>
-    <span asp-validation-for"Name" class="text-danger"></span>
-    <div class="form-group">
-        <label asp-for="Location" class="control-label"></label>
-        <input asp-for="Location" class="form-control" />
-    </div>
-    <div class="row">
-        div class="col-md-4">
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn" btn-primary" />
-    </div>
-</form>
+</div>
+
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
 
-@section Script{
+@section Scripts{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

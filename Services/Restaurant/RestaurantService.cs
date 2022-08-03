@@ -53,5 +53,33 @@ namespace RestaurantRaterMVC.Services.Restaurant
             _context.Restaurants.Add(restaurant);
             return await _context.SaveChangesAsync() == 1;
         }
+
+        public async Task<RestaurantDetail> GetRestaurantById(int id)
+        {
+            RestaurantEntity? restaurant = await _context.Restaurants
+            .Include(r => r.Ratings)
+            .FirstOrDefaultAsync(r => r.Id == id);
+            if(restaurant == null) return null;
+            RestaurantDetail restaurantDetail = new RestaurantDetail()
+            {
+                Id= restaurant.Id,
+                Name = restaurant.Name,
+                Location = restaurant.Location,
+                AverageFoodScore = restaurant.AverageFoodScore,
+                AverageCleanlinessScore = restaurant.AverageCleanlinessScore,
+                AverageAtmosphereScore = restaurant.AverageAtmosphereScore
+            };
+            return restaurantDetail;
+        }
+
+        public async Task<bool> UpdateRestaurant(RestaurantEdit model)
+        {
+            RestaurantEntity restaurant = await _context.Restaurants.FindAsync(model.Id);
+            if(restaurant == null) return false;
+            restaurant.Location = model.Location;
+            restaurant.Name = model.Name;
+
+            return await _context.SaveChangesAsync() == 1;
+        }
     }
 }
