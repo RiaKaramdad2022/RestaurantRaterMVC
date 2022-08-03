@@ -15,39 +15,30 @@
     <dd class="col-sm-10">
         @Html.DisplayFor(model => model.Id)
     </dd>
-    <dl class="row">
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.Name)
     </dt>
     <dd class="col-sm-10">
         @Html.DisplayFor(model => model.Name)
     </dd>
-    <dl class="row">
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.Location)
     </dt>
     <dd class="col-sm-10">
         @Html.DisplayFor(model => model.Location)
     </dd>
-    <dl class="row">
     <dt class="col-sm-2">
         @Html.DisplayNameFor(model => model.Score)
     </dt>
-    <dd class="col-sm-10">
+<dd class="col-10">
+    @if (Model.Score > 0)
+    {
         @Html.DisplayFor(model => model.Score)
-    </dd>
-    <dt class="col-sm-2">
-        @Html.DisplayNameFor(model => model.Score)
-    </dt>
-    <dd class="col-sm-10">
-        @if(Model.Score > 0)
-        {
-            @Html.DisplayFor(modelItem => Model.Score )
-        }
-        else
-        {
-            <span>No Ratins yet</span>
-        }
+    }
+    else
+    {
+        <span>No ratings yet</span>
+    }
     </dd>
 </dl>
 
