@@ -14,5 +14,14 @@ namespace RestaurantRaterMVC.Controllers
         {
             _service = service;
         }
+        
+        //The Index method for Ratings is pretty simple - we just need to get all of the ratings from the service, and return them in the View. 
+        // The list can be empty but it won't be null.
+        public async Task<IActionResult> Index()
+        {
+            var ratings = await _service.GetAllRatings();
+            return View(ratings);
+        }
+
     }
 }

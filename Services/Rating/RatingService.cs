@@ -15,7 +15,6 @@ namespace RestaurantRaterMVC.Services.Rating
         {
             _context = context;
         }
-
         public async Task<List<RatingListItem>> GetAllRatings()
         {
             // In the GetAllRatings method, all we need to do is convert the DbSet of Ratings to a list of RatingListItems. We can do this using the LINQ Select method:
@@ -31,5 +30,7 @@ namespace RestaurantRaterMVC.Services.Rating
             //This will give us an IQueryable, so to convert this to a list, we should call ToListAsync, then await this action and return it
             return await ratings.ToListAsync();
         }
+
+        
     }
 }

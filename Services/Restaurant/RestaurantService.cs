@@ -84,7 +84,7 @@ namespace RestaurantRaterMVC.Services.Restaurant
 
         public async Task<bool> DeleteRestaurant(int Id)
         {
-            RestaurantEntity restaurant = await _context.Restaurants.FindAsync();
+            RestaurantEntity restaurant = await _context.Restaurants.FindAsync(Id);
             if(restaurant == null) return false;
             _context.Restaurants.Remove(restaurant);
             return await _context.SaveChangesAsync() == 1;
