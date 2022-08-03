@@ -26,8 +26,12 @@ namespace RestaurantRaterMVC.Controllers
 
         public async Task<IActionResult> Create()
         {
+            //The Create functionality on this controller will require two endpoints:
+            //A GET endpoint to get the Create View, which contains the HTML form we'll use to create Restaurants
             return View();
         }
+        
+        //- A POST endpoint to take in the user-submitted data from the form and turn it into a C# data object which can be stored in a database
 
         [HttpPost]
         public async Task<IActionResult> Create(RestaurantCreate model)

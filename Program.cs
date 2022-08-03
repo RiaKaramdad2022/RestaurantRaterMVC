@@ -8,7 +8,6 @@ using RestaurantRaterMVC.Services.Restaurant;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<RestaurantDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-// builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IRestaurantService,RestaurantService>();
 
 // Add services to the container.
