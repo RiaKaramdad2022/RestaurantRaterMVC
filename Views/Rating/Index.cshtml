@@ -1,16 +1,11 @@
 @model IEnumerable<RestaurantRaterMVC.Models.RatingListItem>
-
 @{
     ViewData["Title"] = "Ratings";
 }
-
 <h1>Ratings</h1>
-<p>
-    @Html.ActionLink("Rate A Restaurant", "Create")
-</p>
+<p>@Html.ActionLink("Rate A Restaurant", "Create")</p>
 
 <table class="table">
-    <thead>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.RestaurantName)
@@ -18,21 +13,28 @@
         <th>
             @Html.DisplayNameFor(model => model.FoodScore)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AtmosphereScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.CleanlinessScore)
+        </th>
     </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RestaurantName)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.FoodScore)
+                @Html.DisplayFor(modelItem => item.FoodScore)
+                </td>
+                <td>
+                @Html.DisplayFor(ModelItem => item.AtmosphereScore)
+                </td>
+                <td>
+                @Html.DisplayFor(ModelItem => item.CleanlinessScore)
                 </td>
             </tr>
         }
-
-
-
 </table>

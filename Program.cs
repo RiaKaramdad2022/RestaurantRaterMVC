@@ -4,11 +4,13 @@ using RestaurantRaterMVC;
 using RestaurantRaterMVC.Services;
 using RestaurantRaterMVC.Data;
 using RestaurantRaterMVC.Services.Restaurant;
+using RestaurantRaterMVC.Services.Rating;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<RestaurantDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IRestaurantService,RestaurantService>();
+builder.Services.AddScoped<IRatingService, RatingService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
