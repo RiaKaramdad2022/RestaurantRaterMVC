@@ -9,7 +9,7 @@ namespace RestaurantRaterMVC.Models
     public class RatingListItem
     {
         public int Id { get; set; }
-        [Display(Name = "Restaurant Name")]
+        [Display(Name = "Restaurant")]
         public string RestaurantName { get; set; }
         [Display(Name = "Food Score")]
         public double FoodScore { get; set; }
