@@ -31,6 +31,36 @@ namespace RestaurantRaterMVC.Services.Rating
             return await ratings.ToListAsync();
         }
 
-        
+        public async Task<List<RatingListItem>> GetRatingsForRestaurant(int id)
+        {
+            var ratings = _context.Ratings
+            .Where(r => r.RestaurantId == id)
+            .Select(r => new RatingListItem()
+            {
+                Id = r.Id,
+                RestaurantName = r.Restaurant.Name,
+                FoodScore = r.FoodScore,
+                AtmosphereScore = r.AtmosphereScore,
+                CleanlinessScore = r.CleanlinessScore,
+            });
+            return await ratings.ToListAsync();
+        }
+
+        //To rate a Restaurant, we just need to take a RatingCreate model, and convert it into a RatingEntity for the database:
+        public async Task<bool> RateRestaurant(RatingCreate model)
+        {
+            var rating = new RatingEntity()
+            {
+                FoodScore = model.FoodScore,
+                AtmosphereScore = model.AtmosphereScore,
+                CleanlinessScore = model.CleanlinessScore,
+                RestaurantId = model.RestaurantId,
+            };
+            // And then we can add that entity to the context and save
+            _context.Ratings.Add(rating);
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+
     }
 }
