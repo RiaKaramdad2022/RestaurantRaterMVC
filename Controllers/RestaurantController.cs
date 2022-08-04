@@ -98,5 +98,19 @@ namespace RestaurantRaterMVC.Controllers
 
             return View(model);
         }
+
+        public async Task<IActionResult> DeleteRating (int id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+        var rating = await _service.DeleteRestaurant(id);
+        if(rating == null)
+        {
+            return NotFound();
+        }
+        return View(rating);
     }
+}
 }

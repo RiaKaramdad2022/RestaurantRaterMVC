@@ -60,7 +60,5 @@ namespace RestaurantRaterMVC.Services.Rating
             _context.Ratings.Add(rating);
             return await _context.SaveChangesAsync() == 1;
         }
-
-
     }
-}
+    }
